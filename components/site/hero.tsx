@@ -83,7 +83,12 @@ export function Hero() {
           <h1 className="text-[clamp(1.85rem,2.9vw,2.75rem)] leading-[1.15] font-semibold text-white">
             {slide.title}
           </h1>
-          <p className="mt-3 max-w-[640px] text-[15px] leading-relaxed text-white sm:text-base">
+          <p
+            className={cn(
+              "mt-3 max-w-[640px] text-[15px] leading-relaxed text-white sm:text-base",
+              slide.alignment === "right" && "ml-auto text-right"
+            )}
+          >
             {slide.text}
           </p>
           <a
