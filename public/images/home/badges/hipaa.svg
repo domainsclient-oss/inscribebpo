@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" fill="none">
+  <!-- Placeholder badge: replace with official certification artwork -->
+  <rect x="4" y="12" width="252" height="76" rx="10" stroke="#fff" stroke-width="4"/>
+  <path d="M40 22v56M28 32c8-6 16-6 24 0M30 44c6 6 14 6 20 0M30 56c6 6 14 6 20 0M34 68c4 4 8 4 12 0" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <text x="160" y="56" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#fff">HIPAA</text>
+  <text x="160" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#fff" letter-spacing="2">COMPLIANT</text>
+</svg>
