@@ -18,18 +18,41 @@ export type NavItem = {
   children?: { label: string; href: string }[];
 };
 
+/**
+ * Single source of truth for the service links used by the header dropdown,
+ * the footer column and the service-detail sidebar. Only Medical Record
+ * Service has a page of its own so far — the rest deep-link into the matching
+ * card on /our-services.
+ */
 export const services = [
-  { label: "Medical Record Service", href: "#services" },
-  { label: "APS Summary", href: "#services" },
-  { label: "Litigation Support Service", href: "#services" },
-  { label: "Mass Tort Cases", href: "#services" },
+  {
+    label: "Medical Record Service",
+    href: "/our-services/medical-record-services",
+  },
+  { label: "APS Summary", href: "/our-services/aps-summary-services" },
+  {
+    label: "Litigation Support Service",
+    href: "/our-services/litigation-support-services",
+  },
+  {
+    label: "Mass Tort Cases",
+    href: "/our-services/mass-tort-cases-services",
+  },
 ];
 
+/**
+ * Single source of truth for the industry links used by the header dropdown
+ * and the industry-detail sidebar. Every entry has its own detail page under
+ * /industries/[slug]; `href` must match the matching entry in
+ * `lib/industry-details.ts` so the sidebar can highlight the active item.
+ */
 export const industries = [
-  { label: "Attorneys & Law Firms", href: "#features" },
-  { label: "Insurance Companies", href: "#features" },
-  { label: "Life Care Planning", href: "#features" },
-  { label: "IME's", href: "#features" },
+  {
+    label: "Health Care Providers",
+    href: "/industries/health-care-providers",
+  },
+  { label: "Insurance companies", href: "/industries/insurance-companies" },
+  { label: "Legal professionals", href: "/industries/legal-professionals" },
 ];
 
 export const nav: NavItem[] = [

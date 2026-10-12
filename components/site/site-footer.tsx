@@ -55,7 +55,7 @@ export function SiteFooter({ className }: { className?: string }) {
               <li key={service.label}>
                 <Link
                   className="group flex items-start gap-3 text-[15px] leading-snug text-white/75 transition-colors hover:text-white"
-                  href="/our-services"
+                  href={service.href}
                 >
                   <ChevronRight
                     aria-hidden="true"

@@ -9,48 +9,59 @@ export type ServiceItem = {
   description: string;
   image: string;
   href: string;
+  /** Scroll target used by the header's "Our Services" dropdown. */
+  anchor?: string;
 };
 
 export const serviceItems: ServiceItem[] = [
   {
+    anchor: "medical-record-service",
     title: "Streamlined Medical Records for Smarter Decisions",
     description:
       "Accurate, organized, and HIPAA-compliant record retrieval and summarization for legal and insurance needs.",
     image: "/images/home/Medical-Record.webp",
-    href: "/our-services",
+    href: "/our-services/medical-record-services",
   },
   {
+    anchor: "aps-summary",
     title: "Concise APS Summaries That Save Time",
     description:
       "Clear, actionable summaries of attending physician statements to support underwriting and claims processes.",
     image: "/images/home/APS-Summary-services.webp",
-    href: "/our-services",
+    href: "/our-services/aps-summary-services",
   },
   {
+    anchor: "litigation-support",
     title: "Litigation Support That Strengthens Your Case",
     description:
       "Reliable documentation, case chronology, and medical insights to empower legal teams at every stage.",
     image: "/images/home/Litigation-Support.webp",
-    href: "/our-services",
+    href: "/our-services/litigation-support-services",
   },
   {
+    anchor: "mass-tort-cases",
     title: "Mass Tort Case Management Made Easy",
     description:
       "Scalable support for law firms handling high-volume tort cases, with accurate medical data and efficient workflows.",
     image: "/images/home/Mass-Tort-Cases-service.webp",
-    href: "/our-services",
+    href: "/our-services/mass-tort-cases-services",
   },
 ];
 
 export function ServiceCard({
   item,
   priority = false,
+  /** Only the /our-services grid opts in, so anchor ids stay unique per page. */
+  withAnchor = false,
 }: {
   item: ServiceItem;
   priority?: boolean;
+  withAnchor?: boolean;
 }) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden border border-black/8 bg-white pb-16 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_14px_34px_rgba(0,0,0,0.1)]">
+    <article
+      id={withAnchor ? item.anchor : undefined}
+      className="group relative flex h-full flex-col scroll-mt-28 overflow-hidden border border-black/8 bg-white pb-16 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_14px_34px_rgba(0,0,0,0.1)]">
       {/* Image + floating badge */}
       <div className="relative px-4 pt-4">
         <div className="relative aspect-[247/158] w-full overflow-hidden">

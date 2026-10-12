@@ -7,14 +7,21 @@ import { cn } from "@/lib/utils";
  * filters. Intrinsic sizes are read from the files themselves; `object-contain`
  * keeps each mark centred within its row height regardless of canvas padding.
  */
-const tuv = {
+export type Badge = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+const tuv: Badge = {
   src: "/images/home/tuv-white-text-300x300.png",
   alt: "TÜV Rheinland certified",
   width: 300,
   height: 300,
 };
 
-const certifications = [
+const certifications: Badge[] = [
   {
     src: "/images/home/an-image-of-Hipaa-compliant.webp",
     alt: "HIPAA compliant",
@@ -36,11 +43,16 @@ const certifications = [
 ];
 
 export function Recognitions({
+  badges = certifications,
   className,
   heading = "Our Recognitions",
+  lead = tuv,
 }: {
+  badges?: Badge[];
   className?: string;
   heading?: string;
+  /** Pass `null` to render the badge row without a lead mark above it. */
+  lead?: Badge | null;
 }) {
   return (
     <section
@@ -54,19 +66,26 @@ export function Recognitions({
         </h2>
 
         {/* Lead badge */}
-        <div className="mt-10 flex justify-center lg:mt-12">
-          <Image
-            alt={tuv.alt}
-            className="h-[140px] w-auto object-contain sm:h-[170px]"
-            height={tuv.height}
-            src={tuv.src}
-            width={tuv.width}
-          />
-        </div>
+        {lead && (
+          <div className="mt-10 flex justify-center lg:mt-12">
+            <Image
+              alt={lead.alt}
+              className="h-[140px] w-auto object-contain sm:h-[170px]"
+              height={lead.height}
+              src={lead.src}
+              width={lead.width}
+            />
+          </div>
+        )}
 
         {/* Supporting badges, divided by hairlines on larger screens */}
-        <ul className="mt-10 grid grid-cols-1 items-center gap-10 sm:grid-cols-3 sm:gap-0 lg:mt-14">
-          {certifications.map((badge, index) => (
+        <ul
+          className={cn(
+            "mt-10 grid grid-cols-1 items-center gap-10 sm:gap-0 lg:mt-14",
+            badges.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+          )}
+        >
+          {badges.map((badge, index) => (
             <li
               className={cn(
                 "flex items-center justify-center px-6 sm:px-8",

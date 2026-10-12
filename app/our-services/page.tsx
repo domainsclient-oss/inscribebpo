@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
-import { Services } from "@/components/site/services";
+import { PageBanner } from "@/components/site/page-banner";
+import { ServicesIntro } from "@/components/services/services-intro";
+import { ConsultantCta } from "@/components/services/consultant-cta";
+import { RequestProposal } from "@/components/site/request-proposal";
+import { Recognitions } from "@/components/site/recognitions";
 import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
@@ -9,25 +13,56 @@ export const metadata: Metadata = {
     "Medical record retrieval and summarization, APS summaries, litigation support and mass tort case management for attorneys, law firms and insurance companies.",
 };
 
+/** Certification artwork shipped alongside the services page. */
+const recognitionLead = {
+  src: "/images/service/tuv-white-text-300x300.png",
+  alt: "TÜV Rheinland certified",
+  width: 300,
+  height: 300,
+};
+
+const recognitionBadges = [
+  {
+    src: "/images/service/an-image-of-Hipaa-compliant.webp",
+    alt: "HIPAA compliant",
+    width: 500,
+    height: 214,
+  },
+  {
+    src: "/images/service/an-image-of-a-iso.webp",
+    alt: "ISO 27001 certified — Information Security Management System",
+    width: 500,
+    height: 214,
+  },
+  {
+    src: "/images/service/iso-9001.png",
+    alt: "ISO 9001 certified",
+    width: 300,
+    height: 128,
+  },
+];
+
 export default function OurServicesPage() {
   return (
     <main className="min-h-screen bg-white">
       <SiteHeader />
 
-      <section className="bg-navy py-12 sm:py-16" aria-label="Page heading">
-        <div className="container-site">
-          <h1 className="text-[clamp(2rem,3.4vw,2.75rem)] leading-tight font-bold text-white">
-            Our Services
-          </h1>
-          <p className="mt-3 max-w-[640px] text-[15px] leading-relaxed text-white/80">
-            Accurate, HIPAA-compliant medical record services built for the
-            Medico Legal and Insurance Industries.
-          </p>
-        </div>
-      </section>
+      <PageBanner
+        alt="Two colleagues reviewing medical records together"
+        crumbs={[{ href: "/", label: "Inscribe INC" }, { label: "Services" }]}
+        height={500}
+        priority
+        src="/images/service/inner3.webp"
+        title="Services"
+        width={1920}
+      />
 
-      <Services className="bg-white" eyebrow="What we" heading="Offer" />
+      <ServicesIntro />
+      <ConsultantCta />
+      <RequestProposal eyebrow="Have any project" variant="brand" />
+      <Recognitions badges={recognitionBadges} lead={recognitionLead} />
       <SiteFooter />
     </main>
   );
 }
+
