@@ -18,7 +18,6 @@ const proposalSheetHeaders = [
   "Phone number",
   "Your website",
   "Your Message Here",
-  "Company",
 ];
 
 const caseStudySheetHeaders = [
@@ -102,7 +101,7 @@ export async function appendSubmissionToSheet(submission: FormSubmission) {
   const headersForTab = isCaseStudy
     ? caseStudySheetHeaders
     : proposalSheetHeaders;
-  const lastColumn = isCaseStudy ? "D" : "G";
+  const lastColumn = isCaseStudy ? "D" : "F";
   const accessToken = await getGoogleAccessToken();
   const sheetRange = `'${tabName.replace(/'/g, "''")}'`;
   const baseUrl =
@@ -164,7 +163,6 @@ export async function appendSubmissionToSheet(submission: FormSubmission) {
         submission.phone,
         submission.website,
         submission.message,
-        submission.company,
       ];
   const appendResponse = await fetch(
     `${baseUrl}/${encodeURIComponent(`${sheetRange}!A:${lastColumn}`)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
@@ -211,7 +209,7 @@ export async function emailSubmission(submission: FormSubmission) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Inscribe BPO Website <sales@inscribebpo.com>",
+      from: "Inscribe BPO Website <sales@updates.inscribebpo.com>",
       to: [contact.email],
       reply_to: submission.email,
       subject: `Website ${formLabel}`,
