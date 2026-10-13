@@ -48,7 +48,8 @@ export default function ExpertMedicalReviewsPage() {
             alt=""
             className="object-cover"
             fill
-            priority
+            fetchPriority="high"
+            loading="eager"
             sizes="100vw"
             src="/images/APS-Summary-1-scaled-1.webp"
           />
@@ -63,7 +64,8 @@ export default function ExpertMedicalReviewsPage() {
                 alt="Inscribe BPO"
                 className="mb-9 h-auto w-[190px]"
                 height={65}
-                priority
+                loading="eager"
+                sizes="190px"
                 src="/images/home/footer-logo.webp"
                 width={300}
               />
@@ -118,8 +120,9 @@ export default function ExpertMedicalReviewsPage() {
                 >
                   <FontAwesomeIcon
                     aria-hidden="true"
-                    className="size-16 shrink-0"
+                    className="shrink-0"
                     icon={icon}
+                    style={{ fontSize: "40px" }}
                   />
                   <h2 className="max-w-[22ch] text-xl leading-snug font-semibold text-inherit sm:text-2xl">
                     {text}

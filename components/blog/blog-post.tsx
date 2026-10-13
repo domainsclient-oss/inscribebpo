@@ -9,10 +9,8 @@ import { cn } from "@/lib/utils";
  */
 function PostSection({
   section,
-  priority,
 }: {
   section: BlogSection;
-  priority: boolean;
 }) {
   const imageLeft = section.imageSide === "left";
   /** The backdrop artwork is dark, so copy over it flips to light. */
@@ -84,8 +82,8 @@ function PostSection({
             </p>
           ))}
 
-          {section.blocks?.map((block) => (
-            <div className="mt-8" key={block.heading ?? block.paragraphs?.[0]}>
+          {section.blocks?.map((block, blockIndex) => (
+            <div className="mt-8" key={blockIndex}>
               {block.heading && (
                 <h3 className="font-heading text-[17px] font-semibold text-brand">
                   {block.heading}
@@ -181,7 +179,6 @@ function PostSection({
               alt={section.image.alt}
               className="h-auto w-full"
               height={section.image.height}
-              priority={priority}
               sizes="(min-width: 1024px) 601px, 90vw"
               src={section.image.src}
               width={section.image.width}
@@ -218,7 +215,6 @@ export function BlogPost({ post }: { post: BlogPostContent }) {
       {post.sections.map((section, index) => (
         <PostSection
           key={`${index}-${section.heading ?? ""}`}
-          priority={index === 0}
           section={section}
         />
       ))}

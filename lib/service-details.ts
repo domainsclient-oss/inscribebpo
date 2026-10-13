@@ -55,9 +55,10 @@ export const medicalRecordServices: ServiceDetailContent = {
     "/images/service/medical-record-services/Medical-Record-Service-min.webp",
   sidebarImageWidth: 1000,
   sidebarImageHeight: 1000,
-  metaTitle: "Medical Record Service | Inscribe BPO",
+  metaTitle:
+    "Medical Record Review | Medical Review Indexing | Retrieval Services - Inscribe INC",
   metaDescription:
-    "Medical record digitization, indexing, coding, retrieval, transcription and summarization \u2014 two decades of Medico-Legal and Insurance expertise from Inscribe BPO.",
+    "Inscribe Medical Record Review Services by one of the leading Medical Records Review Companies in USA. Inscribe’s Medical Record Service is a cornerstone of our expertise, honed over two decades in the Medico-Legal and Insurance industries.",
   subServices: [
     {
       label: "Medical Record Digitization",
@@ -119,9 +120,9 @@ export const apsSummaryServices: ServiceDetailContent = {
     "/images/service/aps-summary-services/APS-Summarization-min-500x500-1.webp",
   sidebarImageWidth: 500,
   sidebarImageHeight: 500,
-  metaTitle: "APS Summary | Inscribe BPO",
+  metaTitle: "APS Summary | APS Retrievals and Summaries - Inscribe INC",
   metaDescription:
-    "Inscribe\u2019s APS Summary service streamlines Attending Physician Statements for the insurance and legal sectors \u2014 swift APS retrieval plus concise, ready-to-use summaries for underwriting, claims and legal assessments.",
+    "At Inscribe, our APS Retrievals and Summary service is your solution for streamlining Attending Physician Statements (APS) in the insurance and legal sectors.",
   subServices: [
     {
       label: "APS Retrieval",
@@ -162,9 +163,9 @@ export const litigationSupportServices: ServiceDetailContent = {
     "/images/service/litigation-support-services/Litigation-Support-Services-min.webp",
   sidebarImageWidth: 1000,
   sidebarImageHeight: 1000,
-  metaTitle: "Litigation Support Service | Inscribe BPO",
+  metaTitle: "Litigation Support | Litigation Consulting Services - Inscribe INC",
   metaDescription:
-    "Legal research, document and record management, discovery support, trial preparation, deposition summaries and expert witness coordination for attorneys and law firms from Inscribe BPO.",
+    "Inscribe offers a comprehensive range of Litigation Support and Consulting Services tailored for law firms, legal departments, and attorneys.",
   subServices: [
     {
       label: "Legal Research",
@@ -223,9 +224,10 @@ export const massTortCasesServices: ServiceDetailContent = {
   sidebarImage: "/images/service/mass-tort-cases-services/Mass-Tort-min.webp",
   sidebarImageWidth: 1000,
   sidebarImageHeight: 1000,
-  metaTitle: "Mass Tort Cases | Inscribe BPO",
+  metaTitle:
+    "Mass Tort Litigation Support Services | Medical Record Review | APS Summary - Inscribe INC",
   metaDescription:
-    "Data management, plaintiff coordination, document review, communication support, legal research and expert witness coordination for large-scale mass tort litigation from Inscribe BPO.",
+    "Inscribe is a Leading Medical Record Review Service Provider to The Law Firms and Independent Legal Practices and Teams Throughout the United States.",
   subServices: [
     {
       label: "Data Management",
@@ -264,4 +266,3 @@ export const massTortCasesServices: ServiceDetailContent = {
     "Trust Inscribe to be your partner in managing the intricacies of mass tort cases and to provide the comprehensive solutions required to represent the best interests of the individuals affected. With our support, you can focus on building a strong case and pursuing justice for those who have been harmed.",
   ],
 };
-

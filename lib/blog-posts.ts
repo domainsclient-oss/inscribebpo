@@ -84,9 +84,9 @@ export const massTortCases: BlogPostContent = {
   excerpt:
     "A detailed look into how Inscribe handles mass tort cases, showcasing the efficiency and expertise in managing large-scale medical record analysis.",
   metaTitle:
-    "Behind the Scenes: Inscribe\u2019s Approach to Mass Tort Cases | Inscribe BPO",
+    "Mass Tort Case Management | Medical Record Analysis by Inscribe - Inscribe INC",
   metaDescription:
-    "How Inscribe manages large-scale medical record analysis for mass tort cases \u2014 customized workflows, scalable infrastructure and strict quality assurance.",
+    "Explore Inscribe's efficient approach to managing mass tort cases involving extensive medical record analysis. Our scalable solutions, advanced technology, and expert team ensure accurate and timely processing of large volumes of data, supporting effective legal strategies.",
   sections: [
     {
       heading: "Behind the Scenes: Inscribe's Approach to Mass Tort Cases",
@@ -279,9 +279,9 @@ export const imeMedicalRecordAnalysis: BlogPostContent = {
   excerpt:
     "How Inscribe delivers accurate Independent Medical Examinations and medical record analysis that strengthen legal strategies for law firms.",
   metaTitle:
-    "IMEs and Medical Record Analysis: Inscribe\u2019s Expertise | Inscribe BPO",
+    "IME and Medical Record Analysis Services - Inscribe INC",
   metaDescription:
-    "Inscribe\u2019s expertise in Independent Medical Examinations (IMEs) and Medical Record Analysis \u2014 expert analysts, comprehensive review and timely delivery.",
+    "Leverage Inscribe's expertise in independent medical examinations (IMEs) and comprehensive medical record analysis to gain critical insights for legal cases. Our team provides accurate assessments, thorough record reviews, and consultative support to strengthen legal strategies.",
   sections: [
     {
       heading:
@@ -485,9 +485,9 @@ export const lifeCarePlanning: BlogPostContent = {
   excerpt:
     "How Inscribe\u2019s life care planning services map lifetime care needs with accuracy, helping providers and legal teams improve patient outcomes.",
   metaTitle:
-    "Life Care Planning Unveiled: Enhancing Patient Outcomes | Inscribe BPO",
+    "Life Care Planning Services | Enhance Patient Outcomes with Inscribe - Inscribe INC",
   metaDescription:
-    "Inscribe\u2019s life care planning services \u2014 thorough medical record analysis, multidisciplinary expertise and quality assurance for comprehensive Life Care Plans.",
+    "Discover how Inscribe's life care planning services can enhance patient outcomes. Our comprehensive approach includes medical record analysis, multidisciplinary expertise, and quality assurance measures to create accurate life care plans tailored to individual needs.",
   sections: [
     {
       heading:
@@ -687,9 +687,9 @@ export const insuranceMedicalRecords: BlogPostContent = {
   excerpt:
     "How Inscribe helps insurers manage intricate medical records \u2014 accurate transcription, strong security and HIPAA compliance for a streamlined claims process.",
   metaTitle:
-    "The Critical Role of Medical Records in Insurance Processes | Inscribe BPO",
+    "Mass Tort Litigation Support Services | Mass Tort Cases - Inscribe INC",
   metaDescription:
-    "Medical record transcription and review for insurers \u2014 faster claim processing, higher accuracy, robust security and regulatory compliance from Inscribe.",
+    "Discover how Inscribe's medical record transcription services streamline the insurance claims process. Our accurate transcripts, quality assurance, and regulatory compliance expertise ensure efficient claim assessments and secure data handling.",
   sections: [
     {
       heading:
@@ -874,9 +874,9 @@ export const navigatingTheLegalLandscape: BlogPostContent = {
   bannerAlt: "Attorney reviewing medical records for a case",
   excerpt:
     "A guide to Inscribe\u2019s medical record services \u2014 how we help attorneys and law firms analyse complex medical documentation with precision and confidentiality.",
-  metaTitle: "Navigating the Legal Landscape | Inscribe BPO",
+  metaTitle: "APS Summary | APS Retrievals and Summaries - Inscribe INC",
   metaDescription:
-    "A guide to Inscribe\u2019s medical record services for attorneys and law firms \u2014 expert analysts, data integration, quality assurance and HIPAA compliance.",
+    "Specializing in medico-legal medical record analysis, Inscribe offers precise, confidential services for law firms and attorneys.",
   sections: [
     {
       eyebrow: "Navigating the Legal Landscape",
@@ -1044,9 +1044,9 @@ export const apsSummaries: BlogPostContent = {
   excerpt:
     "How Inscribe\u2019s accurate, comprehensive APS summaries streamline legal proceedings for attorneys, law firms, insurers and IME entities.",
   metaTitle:
-    "Unlocking Efficiency: APS Summaries by Inscribe in Legal Proceedings | Inscribe BPO",
+    "Inscribe’s APS Summaries, Independent Medical Examination (IME) - Inscribe INC",
   metaDescription:
-    "Inscribe\u2019s Attending Physician Statement summaries \u2014 advanced data analysis, medical expertise and HIPAA compliance that streamline legal proceedings.",
+    "In legal proceedings, APS summaries prepared by Inscribe play a crucial role in presenting complex information in a clear and concise manner. These summaries help lawyers and judges understand the key points of a case quickly and efficiently.",
   sections: [
     {
       heading:
@@ -1221,9 +1221,9 @@ export const litigationSupportService: BlogPostContent = {
   excerpt:
     "How Inscribe\u2019s litigation support services help healthcare law firms organise medical documentation, analyse evidence and build stronger legal defences.",
   metaTitle:
-    "Inscribe\u2019s Litigation Support Service: A Partner in Legal Success | Inscribe BPO",
+    "Inscribe’s Litigation Support Services, Medico-Legal Cases - Inscribe INC",
   metaDescription:
-    "Litigation support for healthcare law firms \u2014 document management, evidence analysis, medical terminology expertise and HIPAA-compliant data handling.",
+    "Inscribe’s Litigation support services, assists attorneys with litigation management. Our experts offer full range of litigation support services, including: healthcare litigation and medical litigation services.",
   sections: [
     {
       paragraphs: [

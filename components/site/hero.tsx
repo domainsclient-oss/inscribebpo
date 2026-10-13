@@ -55,7 +55,8 @@ export function Hero() {
           slide.mirrored && "[transform:scaleX(-1)]"
         )}
         fill
-        priority={activeIndex === 0}
+        fetchPriority={activeIndex === 0 ? "high" : "auto"}
+        loading="eager"
         sizes="100vw"
         src={slide.image}
       />
@@ -76,7 +77,8 @@ export function Hero() {
               slide.alignment === "right" && "ml-auto"
             )}
             height={147}
-            priority={activeIndex === 0}
+            loading="eager"
+            sizes="(min-width: 640px) 520px, calc(100vw - 2.5rem)"
             src="/images/home/hero/iso-logo.png"
             width={800}
           />

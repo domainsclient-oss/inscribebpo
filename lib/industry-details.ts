@@ -56,9 +56,10 @@ export const healthCareProviders: IndustryDetailContent = {
       height: 539,
     },
   ],
-  metaTitle: "Health Care Providers | Inscribe BPO",
+  metaTitle:
+    "Leading Healthcare Business Outsourcing Companies | Medical Record Retrieval Services - Inscribe INC",
   metaDescription:
-    "Medical record digitization, indexing, coding, retrieval, transcription and compliance reviews that let healthcare providers focus on patient care.",
+    "Inscribe offers tailored BPO services for health care providers. We also offer medical record retrieval, transcription, summarization, and review for coding accuracy to further streamline your operations and decision-making processes.",
   paragraphs: [
     "In today\u2019s complex healthcare landscape, managing medical records, data, and documentation is more critical than ever. Healthcare providers are entrusted with sensitive patient information, making the accurate and secure management of medical records a paramount concern. Inscribe understands the unique challenges faced by healthcare providers and offers tailored solutions to meet these needs.",
     "Our services are designed to enhance the efficiency and accuracy of medical record management, ensuring that healthcare providers have the resources they require to focus on patient care. Inscribe provides services such as medical record digitization, indexing, coding, and classification, making it easier to retrieve essential information and improve overall operational efficiency.",
@@ -96,9 +97,10 @@ export const insuranceCompanies: IndustryDetailContent = {
       height: 539,
     },
   ],
-  metaTitle: "Insurance companies | Inscribe BPO",
+  metaTitle:
+    "Best BPO Services for Insurance Companies | Medical Record Services | APS Retrieval - Inscribe INC",
   metaDescription:
-    "APS retrieval and summaries, medical record indexing, coding and compliance reviews that help insurers underwrite faster and assess risk accurately.",
+    "Inscribe, we are an established Insurance outsourcing service provider, offering a comprehensive range of solutions to help insurance companies meet the challenges and opportunities.",
   paragraphs: [
     "Insurance companies operate in a highly regulated environment where accuracy, speed, and compliance are paramount. In the world of insurance, making informed decisions, processing claims efficiently, and mitigating risk are crucial. Inscribe offers a suite of services tailored to the specific needs of insurance companies, providing the support required to excel in this industry.",
     "Our APS retrieval and APS summary services simplify the often intricate process of reviewing Attending Physician Statements. By streamlining the analysis of these documents, insurance companies can expedite the underwriting process and make more accurate risk assessments.",
@@ -137,9 +139,10 @@ export const legalProfessionals: IndustryDetailContent = {
       height: 539,
     },
   ],
-  metaTitle: "Legal professionals | Inscribe BPO",
+  metaTitle:
+    "Best Outsourcing Services for Legal Services | Litigation Support Services - Inscribe INC",
   metaDescription:
-    "Litigation support, mass tort case management, document review, deposition summaries and expert witness coordination for attorneys and law firms.",
+    "Inscribe BPO best outsourcing services for legal services offer a range of advantages that can streamline operations, reduce costs, and provide access to expert-level expertise. These services often include document review and drafting, legal research, document preparation, e-discovery management, and even representation in court proceedings.",
   paragraphs: [
     "Legal professionals, including attorneys and law firms, operate in a highly competitive and demanding environment where the ability to access, organize, and understand extensive volumes of data is essential. Inscribe offers a range of services designed to empower legal professionals with the tools they need to excel in their field.",
     "Our litigation support services encompass a wide range of solutions, from legal research and documentation and record management to discovery support and trial preparation. We also provide deposition summaries and expert witness coordination to enhance your litigation strategies.",

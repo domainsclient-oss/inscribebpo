@@ -8,9 +8,10 @@ import { Recognitions } from "@/components/site/recognitions";
 import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
-  title: "Our Services | Inscribe BPO",
+  title:
+    "Mass Tort Litigation Support Services | Medical Record Review | APS Summary - Inscribe INC",
   description:
-    "Medical record retrieval and summarization, APS summaries, litigation support and mass tort case management for attorneys, law firms and insurance companies.",
+    "Inscribe is a Leading Medical Record Review Service Provider to The Law Firms and Independent Legal Practices and Teams Throughout the United States.",
 };
 
 /** Certification artwork shipped alongside the services page. */
@@ -65,4 +66,3 @@ export default function OurServicesPage() {
     </main>
   );
 }
-

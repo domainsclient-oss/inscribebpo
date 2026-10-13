@@ -37,7 +37,9 @@ export function PageBanner({
         alt={alt}
         className="h-[260px] w-full object-cover sm:h-[340px] lg:h-[420px]"
         height={height}
-        priority={priority}
+        fetchPriority={priority ? "high" : undefined}
+        loading={priority ? "eager" : undefined}
+        sizes="100vw"
         src={src}
         width={width}
       />

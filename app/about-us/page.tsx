@@ -9,9 +9,9 @@ import { JourneyCta } from "@/components/site/journey-cta";
 import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
-  title: "About Us | Inscribe BPO",
+  title: "Leading Medical Record Review Companies in USA - Inscribe INC",
   description:
-    "Global Medical Records Services Provider since 2003, serving individual attorneys, law firms, insurance companies, life care planning and IME's.",
+    "Inscribe-Global Medical Record Service Provider since 2003. We provide exclusive services to individual attorneys, law firms, Insurance Companies, Life Care Planning and IME's",
 };
 
 export default function AboutUsPage() {

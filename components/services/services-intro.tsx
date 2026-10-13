@@ -58,11 +58,10 @@ export function ServicesIntro({
 
         {/* Service cards */}
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-14 xl:grid-cols-4">
-          {serviceItems.map((item, index) => (
+          {serviceItems.map((item) => (
             <ServiceCard
               item={item}
               key={item.title}
-              priority={index === 0}
               withAnchor
             />
           ))}

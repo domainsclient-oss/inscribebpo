@@ -64,7 +64,7 @@ export function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="relative z-20 w-full bg-white">
+    <header className="sticky top-0 z-40 w-full bg-white">
       <div className="relative h-10 overflow-hidden bg-navy text-white sm:h-11">
         <span
           aria-hidden="true"
@@ -105,7 +105,8 @@ export function SiteHeader() {
             alt="Inscribe"
             className="h-[38px] w-auto sm:h-[44px]"
             height={51}
-            priority
+            loading="eager"
+            sizes="110px"
             src="/images/home/inscribe-logo.webp"
             width={109}
           />

@@ -8,9 +8,9 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { blogPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
-  title: "Blog | Inscribe BPO",
+  title: "Inscribe’s Litigation Support Services - Inscribe INC",
   description:
-    "Insights on medical record analysis, litigation support and mass tort cases from the Inscribe BPO team.",
+    "Dive into our blog for the latest insights on BPO solutions, industry trends, and expert advice tailored for healthcare, insurance, and legal sectors.",
 };
 
 export default function BlogPage() {
