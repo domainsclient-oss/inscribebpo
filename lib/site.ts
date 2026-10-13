@@ -61,7 +61,7 @@ export const nav: NavItem[] = [
   { label: "Home", href: "#top" },
   { label: "About Us", href: "#about" },
   { label: "Our Services", href: "#services", children: services },
-  { label: "Industries", href: "#features", children: industries },
-  { label: "Blog", href: "#" },
+  { label: "Industries", href: "/industries", children: industries },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "#contact" },
 ];
