@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { nav } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -12,20 +14,31 @@ const pill =
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
+  const pageLinks: Record<string, string> = {
+    Home: "/",
+    "About Us": "/about-us",
+    "Our Services": "/our-services",
+    Industries: "/industries",
+    Blog: "/blog",
+    "Contact Us": "/contact-us",
+  };
+  const getNavHref = (label: string, href: string) =>
+    pathname === "/" ? href : (pageLinks[label] ?? href);
 
   return (
     <header className="sticky top-0 z-40 bg-white shadow-[0_2px_12px_rgba(3,46,66,0.06)]">
       <div className="container-site flex h-[72px] items-center justify-between gap-6">
-        <a href="#top" aria-label="Inscribe BPO home">
+        <Link href="/" aria-label="Inscribe BPO home">
           <Logo />
-        </a>
+        </Link>
 
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-8">
             {nav.map((item, i) => (
               <li key={item.label} className="group relative">
                 <a
-                  href={item.href}
+                  href={getNavHref(item.label, item.href)}
                   className={cn(
                     "flex items-center gap-1 py-6 font-heading text-xs font-medium tracking-wide text-navy uppercase transition-colors hover:text-brand",
                     i === 0 && "text-brand"
@@ -89,7 +102,7 @@ export function SiteHeader() {
               >
                 <div className="flex items-center justify-between">
                   <a
-                    href={item.href}
+                    href={getNavHref(item.label, item.href)}
                     onClick={() => setOpen(false)}
                     className="flex-1 py-3 font-heading text-sm font-medium text-navy uppercase"
                   >
