@@ -1,0 +1,226 @@
+import { createSign } from "node:crypto";
+import { contact } from "@/lib/site";
+
+export type FormSubmission = {
+  formType: "proposal" | "case-study";
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  website: string;
+  message: string;
+};
+
+const proposalSheetHeaders = [
+  "Timestamp",
+  "Name",
+  "Email",
+  "Phone number",
+  "Your website",
+  "Your Message Here",
+  "Company",
+];
+
+const caseStudySheetHeaders = [
+  "Timestamp",
+  "Your Name",
+  "Your Email",
+  "Company",
+];
+
+const serviceRequestTimeoutMs = 15_000;
+
+function requiredEnvironmentVariable(name: string) {
+  const value = process.env[name]?.trim();
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+}
+
+function encodeBase64Url(value: string | Buffer) {
+  return Buffer.from(value).toString("base64url");
+}
+
+async function getGoogleAccessToken() {
+  const clientEmail = requiredEnvironmentVariable(
+    "GOOGLE_SHEETS_CLIENT_EMAIL"
+  );
+  const privateKey = requiredEnvironmentVariable(
+    "GOOGLE_SHEETS_PRIVATE_KEY"
+  ).replace(/\\n/g, "\n");
+  const now = Math.floor(Date.now() / 1000);
+  const unsignedToken = [
+    encodeBase64Url(JSON.stringify({ alg: "RS256", typ: "JWT" })),
+    encodeBase64Url(
+      JSON.stringify({
+        iss: clientEmail,
+        scope: "https://www.googleapis.com/auth/spreadsheets",
+        aud: "https://oauth2.googleapis.com/token",
+        iat: now,
+        exp: now + 3600,
+      })
+    ),
+  ].join(".");
+  const signer = createSign("RSA-SHA256");
+  signer.update(unsignedToken);
+  const assertion = `${unsignedToken}.${signer.sign(privateKey).toString("base64url")}`;
+
+  const response = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion,
+    }),
+    signal: AbortSignal.timeout(serviceRequestTimeoutMs),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Google OAuth request failed (${response.status})`);
+  }
+
+  const result: unknown = await response.json();
+  if (
+    typeof result !== "object" ||
+    result === null ||
+    !("access_token" in result) ||
+    typeof result.access_token !== "string"
+  ) {
+    throw new Error("Google OAuth response did not contain an access token");
+  }
+
+  return result.access_token;
+}
+
+export async function appendSubmissionToSheet(submission: FormSubmission) {
+  const spreadsheetId = requiredEnvironmentVariable("GOOGLE_SHEET_ID");
+  const isCaseStudy = submission.formType === "case-study";
+  const tabName = requiredEnvironmentVariable(
+    isCaseStudy ? "GOOGLE_SHEET_TAB_NAME_2" : "GOOGLE_SHEET_TAB_NAME"
+  );
+  const headersForTab = isCaseStudy
+    ? caseStudySheetHeaders
+    : proposalSheetHeaders;
+  const lastColumn = isCaseStudy ? "D" : "G";
+  const accessToken = await getGoogleAccessToken();
+  const sheetRange = `'${tabName.replace(/'/g, "''")}'`;
+  const baseUrl =
+    `https://sheets.googleapis.com/v4/spreadsheets/` +
+    `${encodeURIComponent(spreadsheetId)}/values`;
+  const headers = { Authorization: `Bearer ${accessToken}` };
+  const headerRange = `${sheetRange}!A1:${lastColumn}1`;
+
+  const existingHeaders = await fetch(
+    `${baseUrl}/${encodeURIComponent(headerRange)}`,
+    { headers, signal: AbortSignal.timeout(serviceRequestTimeoutMs) }
+  );
+  if (!existingHeaders.ok) {
+    throw new Error(`Google Sheets header lookup failed (${existingHeaders.status})`);
+  }
+
+  const headerResult: unknown = await existingHeaders.json();
+  const currentHeaderRow =
+    typeof headerResult === "object" &&
+    headerResult !== null &&
+    "values" in headerResult &&
+    Array.isArray(headerResult.values) &&
+    Array.isArray(headerResult.values[0])
+      ? headerResult.values[0]
+      : [];
+  const hasExpectedHeaders = headersForTab.every(
+    (header, index) => currentHeaderRow[index] === header
+  );
+
+  if (!hasExpectedHeaders) {
+    const writeHeaders = await fetch(
+      `${baseUrl}/${encodeURIComponent(headerRange)}?valueInputOption=RAW`,
+      {
+        method: "PUT",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ values: [headersForTab] }),
+        signal: AbortSignal.timeout(serviceRequestTimeoutMs),
+      }
+    );
+    if (!writeHeaders.ok) {
+      throw new Error(`Google Sheets header write failed (${writeHeaders.status})`);
+    }
+  }
+
+  const values = isCaseStudy
+    ? [
+        new Date().toISOString(),
+        submission.name,
+        submission.email,
+        submission.company,
+      ]
+    : [
+        new Date().toISOString(),
+        submission.name,
+        submission.email,
+        submission.phone,
+        submission.website,
+        submission.message,
+        submission.company,
+      ];
+  const appendResponse = await fetch(
+    `${baseUrl}/${encodeURIComponent(`${sheetRange}!A:${lastColumn}`)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+    {
+      method: "POST",
+      headers: {
+        ...headers,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ values: [values] }),
+      signal: AbortSignal.timeout(serviceRequestTimeoutMs),
+    }
+  );
+
+  if (!appendResponse.ok) {
+    throw new Error(`Google Sheets append failed (${appendResponse.status})`);
+  }
+}
+
+export async function emailSubmission(submission: FormSubmission) {
+  const apiKey = requiredEnvironmentVariable("RESEND_API_KEY");
+  const formLabel =
+    submission.formType === "case-study" ? "Case study request" : "Proposal request";
+  const fields = [
+    ["Name", submission.name],
+    ["Email", submission.email],
+    ["Company", submission.company],
+    ["Phone", submission.phone],
+    ["Website", submission.website],
+    ["Message", submission.message],
+  ] as const;
+  const text = [
+    `New ${formLabel.toLowerCase()} submitted on inscribebpo.com`,
+    "",
+    ...fields.flatMap(([label, value]) =>
+      value ? [`${label}: ${value}`] : []
+    ),
+  ].join("\n");
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "Inscribe BPO Website <sales@inscribebpo.com>",
+      to: [contact.email],
+      reply_to: submission.email,
+      subject: `Website ${formLabel}`,
+      text,
+    }),
+    signal: AbortSignal.timeout(serviceRequestTimeoutMs),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Resend email request failed (${response.status})`);
+  }
+}

@@ -1,33 +1,6 @@
 import Image from "next/image";
+import { ProposalForm } from "@/components/site/proposal-form";
 import { cn } from "@/lib/utils";
-
-const fieldClass =
-  "peer w-full border-0 border-b border-black/15 bg-transparent px-0 pt-5 pb-3 text-[15px] text-navy placeholder:text-ink-2 focus:border-brand focus:ring-0 focus:outline-none";
-
-/** Boxed white fields used by the orange `brand` variant. */
-const brandFieldClass =
-  "w-full border border-white/40 bg-white px-4 py-3 text-[15px] text-navy placeholder:text-ink-2 focus:border-navy focus:ring-0 focus:outline-none";
-
-type Field = {
-  name: string;
-  label: string;
-  type: "text" | "email" | "tel" | "url";
-  autoComplete?: string;
-  required?: boolean;
-};
-
-const fields: Field[] = [
-  { name: "name", label: "Name", type: "text", autoComplete: "name", required: true },
-  {
-    name: "email",
-    label: "E-Mail",
-    type: "email",
-    autoComplete: "email",
-    required: true,
-  },
-  { name: "phone", label: "Phone Number", type: "tel", autoComplete: "tel" },
-  { name: "website", label: "Your Website", type: "url", autoComplete: "url" },
-];
 
 const artwork = {
   default: {
@@ -79,7 +52,7 @@ export function RequestProposal({
         className={cn("bg-brand", className)}
         id="request-proposal"
       >
-        <ProposalCardBody
+        <ProposalForm
           eyebrow={eyebrow}
           heading={heading}
           isBrand
@@ -146,7 +119,7 @@ export function RequestProposal({
                 "bg-white shadow-[0_18px_60px_rgba(3,46,66,0.12)] lg:-ml-16"
             )}
           >
-            <ProposalCardBody
+            <ProposalForm
               eyebrow={eyebrow}
               heading={heading}
               isBrand={isBrand}
@@ -156,103 +129,5 @@ export function RequestProposal({
         </div>
       </div>
     </section>
-  );
-}
-
-/** Eyebrow + heading + form. Shared by every variant, including `panel`. */
-function ProposalCardBody({
-  eyebrow,
-  heading,
-  isBrand,
-  isContact,
-}: {
-  eyebrow?: string;
-  heading: string;
-  isBrand: boolean;
-  isContact: boolean;
-}) {
-  return (
-    <div className="px-6 py-10 sm:px-10 sm:py-12 lg:px-14">
-      {eyebrow && (
-        <p
-          className={cn(
-            "font-heading text-xs font-semibold tracking-[0.18em] uppercase",
-            isBrand ? "text-white/85" : "text-brand"
-          )}
-        >
-          {eyebrow}
-        </p>
-      )}
-
-      <h2
-        className={cn(
-          "text-[clamp(1.6rem,2.6vw,2.1rem)] leading-tight font-bold",
-          isBrand ? "mt-3 text-white" : "text-navy"
-        )}
-      >
-        {heading}
-      </h2>
-
-      <form action="/api/request-proposal" className="mt-8" method="post">
-        <div
-          className={cn(
-            "grid grid-cols-1 sm:grid-cols-2",
-            isBrand ? "gap-4" : "gap-x-10 gap-y-2"
-          )}
-        >
-          {fields.map((field) => (
-            <div key={field.name}>
-              <label className="sr-only" htmlFor={field.name}>
-                {field.label}
-              </label>
-              <input
-                autoComplete={field.autoComplete}
-                className={isBrand ? brandFieldClass : fieldClass}
-                id={field.name}
-                name={field.name}
-                placeholder={field.label}
-                required={field.required}
-                type={field.type}
-              />
-            </div>
-          ))}
-
-          <div className="sm:col-span-2">
-            <label className="sr-only" htmlFor="message">
-              Your Message Here
-            </label>
-            <textarea
-              className={cn(
-                isBrand ? brandFieldClass : fieldClass,
-                "min-h-[120px] resize-y"
-              )}
-              id="message"
-              name="message"
-              placeholder="Your Message Here"
-              rows={3}
-            />
-          </div>
-        </div>
-
-        <div
-          className={cn(
-            "mt-10 flex",
-            isContact ? "justify-start" : "justify-center"
-          )}
-        >
-          <button
-            className={cn(
-              "inline-flex min-h-[52px] items-center justify-center px-10 text-[15px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4",
-              isBrand
-                ? "bg-white text-brand outline-white hover:bg-navy hover:text-white"
-                : "bg-brand text-white outline-brand hover:bg-brand-dark"
-            )}
-            type="submit"
-          >
-            Submit Now
-          </button>
-        </div>
-      </form>
-    </div>
   );
 }
