@@ -35,7 +35,7 @@ export function BackToTop() {
     <button
       aria-hidden={!visible}
       aria-label="Back to top"
-      className={`fixed right-5 bottom-5 z-30 inline-flex size-12 items-center justify-center rounded-full bg-brand text-white shadow-[0_8px_24px_rgba(3,46,66,0.24)] transition-[opacity,transform,background-color] duration-200 hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none sm:right-7 sm:bottom-7 ${
+      className={`fixed left-5 bottom-5 z-30 inline-flex size-12 items-center justify-center rounded-full bg-brand text-white shadow-[0_8px_24px_rgba(3,46,66,0.24)] transition-[opacity,transform,background-color] duration-200 hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none sm:left-7 sm:bottom-7 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0"
