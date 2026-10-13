@@ -45,8 +45,9 @@ export function Expertise() {
             <div className="mb-3 flex justify-center">
               <FontAwesomeIcon
                 aria-hidden="true"
-                className="size-11 shrink-0 text-brand"
+                className="shrink-0 text-brand"
                 icon={item.icon}
+                style={{ fontSize: "40px" }}
               />
             </div>
             <h2 className="mb-2 text-[18px] leading-snug font-semibold text-brand sm:text-[19px]">

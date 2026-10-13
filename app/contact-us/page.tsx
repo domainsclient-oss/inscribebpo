@@ -7,9 +7,10 @@ import { Recognitions } from "@/components/site/recognitions";
 import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Inscribe BPO",
+  title:
+    "Medical Record Review | APS Retrievals and Summaries |Litigation Support Services - Inscribe INC",
   description:
-    "Get in touch with Inscribe BPO — call +1 760 991 4422, email sales@inscribebpo.com, or send us a message about your medical record service needs.",
+    "Medical Record Review Services by Inscribe BPO. Contact us through email or phone to learn more about how our medico-legal services can benefit your law firm",
 };
 
 /** The contact page ships only the two wide badges — no TÜV lead mark. */

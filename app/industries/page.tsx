@@ -8,9 +8,9 @@ import { Recognitions } from "@/components/site/recognitions";
 import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
-  title: "Industries | Inscribe BPO",
+  title: "BPO Services for Healthcare | Insurance | Legal Professionals - Inscribe INC",
   description:
-    "Inscribe BPO serves healthcare providers, insurance companies and legal professionals with medical record digitization, claims support and litigation documentation.",
+    "Inscribe BPO services across healthcare, insurance, and legal industries. Our custom solutions are designed for each sector's unique needs.",
 };
 
 /** Certification artwork shipped alongside the industries page. */

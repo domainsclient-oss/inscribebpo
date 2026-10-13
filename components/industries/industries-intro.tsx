@@ -85,11 +85,10 @@ export function IndustriesIntro({
 
         {/* Audience cards */}
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
-          {industryItems.map((item, index) => (
+          {industryItems.map((item) => (
             <ServiceCard
               item={item}
               key={item.title}
-              priority={index === 0}
               withAnchor
             />
           ))}

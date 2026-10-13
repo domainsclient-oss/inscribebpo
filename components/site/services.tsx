@@ -50,12 +50,10 @@ export const serviceItems: ServiceItem[] = [
 
 export function ServiceCard({
   item,
-  priority = false,
   /** Only the /our-services grid opts in, so anchor ids stay unique per page. */
   withAnchor = false,
 }: {
   item: ServiceItem;
-  priority?: boolean;
   withAnchor?: boolean;
 }) {
   return (
@@ -69,7 +67,6 @@ export function ServiceCard({
             alt=""
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             fill
-            priority={priority}
             sizes="(min-width: 1280px) 300px, (min-width: 640px) 45vw, 90vw"
             src={item.image}
           />
@@ -129,8 +126,8 @@ export function Services({
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-12 xl:grid-cols-4">
-          {serviceItems.map((item, index) => (
-            <ServiceCard item={item} key={item.title} priority={index === 0} />
+          {serviceItems.map((item) => (
+            <ServiceCard item={item} key={item.title} />
           ))}
         </div>
       </div>

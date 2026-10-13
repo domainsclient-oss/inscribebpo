@@ -28,7 +28,6 @@ export function ServiceDetail({
             alt={content.imageAlt}
             className="h-auto w-full object-cover"
             height={content.imageHeight}
-            priority
             src={content.image}
             width={content.imageWidth}
           />
