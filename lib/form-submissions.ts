@@ -41,6 +41,22 @@ function encodeBase64Url(value: string | Buffer) {
   return Buffer.from(value).toString("base64url");
 }
 
+function normalizePrivateKey(value: string) {
+  const normalized = value.replace(/\\n/g, "\n").trim();
+  const match = normalized.match(
+    /-----BEGIN ([A-Z0-9 ]+)-----([\s\S]*?)-----END \1-----/
+  );
+  if (!match) return normalized;
+
+  const [, keyType, encodedKey] = match;
+  const keyLines = encodedKey.replace(/\s/g, "").match(/.{1,64}/g) ?? [];
+  return [
+    `-----BEGIN ${keyType}-----`,
+    ...keyLines,
+    `-----END ${keyType}-----`,
+  ].join("\n");
+}
+
 async function googleRequestError(response: Response, operation: string) {
   const body = await response.text();
   let details = "";
@@ -83,7 +99,7 @@ async function getGoogleAccessToken() {
   );
   const privateKey = requiredEnvironmentVariable(
     "GOOGLE_SHEETS_PRIVATE_KEY"
-  ).replace(/\\n/g, "\n");
+  );
   const now = Math.floor(Date.now() / 1000);
   const unsignedToken = [
     encodeBase64Url(JSON.stringify({ alg: "RS256", typ: "JWT" })),
@@ -99,7 +115,7 @@ async function getGoogleAccessToken() {
   ].join(".");
   const signer = createSign("RSA-SHA256");
   signer.update(unsignedToken);
-  const assertion = `${unsignedToken}.${signer.sign(privateKey).toString("base64url")}`;
+  const assertion = `${unsignedToken}.${signer.sign(normalizePrivateKey(privateKey)).toString("base64url")}`;
 
   const response = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
