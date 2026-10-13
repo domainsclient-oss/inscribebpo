@@ -1,3 +1,5 @@
+export const siteUrl = "https://inscribebpo.com";
+
 export const contact = {
   phone: "+1 760 991 4422",
   phoneHref: "tel:+17609914422",

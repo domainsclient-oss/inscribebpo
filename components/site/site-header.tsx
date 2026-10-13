@@ -56,7 +56,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#about" className={cn(pill, "hidden sm:inline-flex")}>
+          <a
+            href="/expert-medical-reviews"
+            className={cn(pill, "hidden sm:inline-flex")}
+          >
             Success Stories
           </a>
           <button
@@ -130,7 +133,7 @@ export function SiteHeader() {
             ))}
             <li className="pt-4 pb-2 sm:hidden">
               <a
-                href="#about"
+                href="/expert-medical-reviews"
                 onClick={() => setOpen(false)}
                 className={cn(pill, "w-full")}
               >
