@@ -41,6 +41,42 @@ function encodeBase64Url(value: string | Buffer) {
   return Buffer.from(value).toString("base64url");
 }
 
+async function googleRequestError(response: Response, operation: string) {
+  const body = await response.text();
+  let details = "";
+
+  try {
+    const result: unknown = JSON.parse(body);
+    if (typeof result === "object" && result !== null) {
+      const error = "error" in result ? result.error : null;
+      if (typeof error === "object" && error !== null && "message" in error) {
+        const message =
+          typeof error.message === "string" ? error.message : "";
+        const status =
+          "status" in error && typeof error.status === "string"
+            ? error.status
+            : "";
+        details = [status, message].filter(Boolean).join(": ");
+      } else if (
+        typeof result === "object" &&
+        "error_description" in result &&
+        typeof result.error_description === "string"
+      ) {
+        details = result.error_description;
+      }
+    }
+  } catch {
+    // Keep the HTTP status as the diagnostic when Google returns non-JSON.
+  }
+
+  const safeDetails = details
+    .replace(/[\u0000-\u001F\u007F]/g, " ")
+    .slice(0, 500);
+  return new Error(
+    `${operation} failed (${response.status})${safeDetails ? `: ${safeDetails}` : ""}`
+  );
+}
+
 async function getGoogleAccessToken() {
   const clientEmail = requiredEnvironmentVariable(
     "GOOGLE_SHEETS_CLIENT_EMAIL"
@@ -76,7 +112,7 @@ async function getGoogleAccessToken() {
   });
 
   if (!response.ok) {
-    throw new Error(`Google OAuth request failed (${response.status})`);
+    throw await googleRequestError(response, "Google OAuth request");
   }
 
   const result: unknown = await response.json();
@@ -115,7 +151,7 @@ export async function appendSubmissionToSheet(submission: FormSubmission) {
     { headers, signal: AbortSignal.timeout(serviceRequestTimeoutMs) }
   );
   if (!existingHeaders.ok) {
-    throw new Error(`Google Sheets header lookup failed (${existingHeaders.status})`);
+    throw await googleRequestError(existingHeaders, "Google Sheets header lookup");
   }
 
   const headerResult: unknown = await existingHeaders.json();
@@ -145,7 +181,7 @@ export async function appendSubmissionToSheet(submission: FormSubmission) {
       }
     );
     if (!writeHeaders.ok) {
-      throw new Error(`Google Sheets header write failed (${writeHeaders.status})`);
+      throw await googleRequestError(writeHeaders, "Google Sheets header write");
     }
   }
 
@@ -178,7 +214,7 @@ export async function appendSubmissionToSheet(submission: FormSubmission) {
   );
 
   if (!appendResponse.ok) {
-    throw new Error(`Google Sheets append failed (${appendResponse.status})`);
+    throw await googleRequestError(appendResponse, "Google Sheets append");
   }
 }
 
