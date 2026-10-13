@@ -70,6 +70,14 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <a
+            href="https://www.recordreview.ai/"
+            className={cn(pill, "hidden sm:inline-flex")}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Experience Our Ai
+          </a>
+          <a
             href="/expert-medical-reviews"
             className={cn(pill, "hidden sm:inline-flex")}
           >
@@ -145,6 +153,15 @@ export function SiteHeader() {
               </li>
             ))}
             <li className="pt-4 pb-2 sm:hidden">
+              <a
+                href="https://www.recordreview.ai/"
+                onClick={() => setOpen(false)}
+                className={cn(pill, "mb-3 w-full")}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Experience Our Ai
+              </a>
               <a
                 href="/expert-medical-reviews"
                 onClick={() => setOpen(false)}

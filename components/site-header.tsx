@@ -150,12 +150,22 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <Link
-          className="hidden h-11 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-semibold uppercase text-white transition-colors hover:bg-brand-dark xl:flex xl:min-w-[180px]"
-          href="/expert-medical-reviews"
-        >
-          Success Stories
-        </Link>
+        <div className="hidden items-center gap-2 xl:flex">
+          <a
+            className="flex h-11 items-center justify-center whitespace-nowrap rounded-full border border-brand px-4 text-[13px] font-semibold uppercase text-brand transition-colors hover:bg-paper"
+            href="https://www.recordreview.ai/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Experience Our Ai
+          </a>
+          <Link
+            className="flex h-11 min-w-[180px] items-center justify-center whitespace-nowrap rounded-full bg-brand px-5 text-[13px] font-semibold uppercase text-white transition-colors hover:bg-brand-dark"
+            href="/expert-medical-reviews"
+          >
+            Success Stories
+          </Link>
+        </div>
 
         <button
           aria-controls="mobile-navigation"
@@ -230,6 +240,15 @@ export function SiteHeader() {
               </li>
             ))}
             <li className="pt-4">
+              <a
+                className="mb-3 flex min-h-12 items-center justify-center rounded-full border border-brand px-6 text-sm font-semibold uppercase text-brand transition-colors hover:bg-paper"
+                href="https://www.recordreview.ai/"
+                onClick={() => setMenuOpen(false)}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Experience Our Ai
+              </a>
               <Link
                 className="flex min-h-12 items-center justify-center rounded-full bg-brand px-6 text-sm font-semibold uppercase text-white transition-colors hover:bg-brand-dark"
                 href="/expert-medical-reviews"
