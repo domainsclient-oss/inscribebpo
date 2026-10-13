@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { CaseStudyForm, TestimonialCarousel } from "@/components/site/case-study-interactions";
 import { SiteFooter } from "@/components/site/site-footer";
-import { SiteHeader } from "@/components/site/site-header";
+import { SiteHeader } from "@/components/site-header";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {

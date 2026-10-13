@@ -151,7 +151,7 @@ export function SiteHeader() {
 
         <Link
           className="hidden h-11 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-semibold uppercase text-white transition-colors hover:bg-brand-dark xl:flex xl:min-w-[180px]"
-          href="/success-stories"
+          href="/expert-medical-reviews"
         >
           Success Stories
         </Link>
@@ -231,7 +231,7 @@ export function SiteHeader() {
             <li className="pt-4">
               <Link
                 className="flex min-h-12 items-center justify-center rounded-full bg-brand px-6 text-sm font-semibold uppercase text-white transition-colors hover:bg-brand-dark"
-                href="/success-stories"
+                href="/expert-medical-reviews"
                 onClick={() => setMenuOpen(false)}
               >
                 Success Stories
