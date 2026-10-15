@@ -2,7 +2,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * Animated squiggle accent. The wave is an inline SVG tiled on the x-axis so
- * it can scroll seamlessly via `background-position-x` (see `wave-line` in
+ * it can scroll seamlessly; the tiled strip is 40px wider than the visible
+ * area and slides with a compositor-only transform (see `wave-line` in
  * globals.css). Motion is disabled under `prefers-reduced-motion`.
  */
 export function WaveLine({
@@ -19,13 +20,17 @@ export function WaveLine({
   return (
     <span
       aria-hidden="true"
-      className={cn("wave-line block h-3", className)}
-      style={{
-        width: typeof width === "number" ? `${width}px` : width,
-        backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`,
-        backgroundRepeat: "repeat-x",
-        backgroundSize: "40px 12px",
-      }}
-    />
+      className={cn("block h-3 overflow-hidden", className)}
+      style={{ width: typeof width === "number" ? `${width}px` : width }}
+    >
+      <span
+        className="wave-line block h-full w-[calc(100%+40px)] will-change-transform"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`,
+          backgroundRepeat: "repeat-x",
+          backgroundSize: "40px 12px",
+        }}
+      />
+    </span>
   );
 }

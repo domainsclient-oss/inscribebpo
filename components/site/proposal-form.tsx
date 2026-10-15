@@ -109,7 +109,7 @@ export function ProposalForm({
         <p
           className={cn(
             "font-heading text-xs font-semibold tracking-[0.18em] uppercase",
-            isBrand ? "text-white/85" : "text-brand"
+            isBrand ? "text-white" : "text-brand"
           )}
         >
           {eyebrow}

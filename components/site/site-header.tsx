@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { nav } from "@/lib/site";
@@ -71,10 +72,21 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <a
             href="https://www.recordreview.ai/"
-            className={cn(pill, "hidden sm:inline-flex")}
+            className={cn(
+              pill,
+              "group hidden gap-2 border border-[hsl(227_81%_55%)] bg-white text-[hsl(227_81%_55%)] hover:bg-[hsl(227_81%_55%)] hover:text-white sm:inline-flex"
+            )}
             rel="noopener noreferrer"
             target="_blank"
           >
+            <Image
+              src="/InnovAI_logo.svg"
+              alt=""
+              aria-hidden="true"
+              width={54}
+              height={20}
+              className="h-5 w-[54px] shrink-0 object-contain transition-[filter] group-hover:brightness-0 group-hover:invert"
+            />
             Experience Our Ai
           </a>
           <a
@@ -156,10 +168,21 @@ export function SiteHeader() {
               <a
                 href="https://www.recordreview.ai/"
                 onClick={() => setOpen(false)}
-                className={cn(pill, "mb-3 w-full")}
+                className={cn(
+                  pill,
+                  "group mb-3 w-full gap-2 border border-[hsl(227_81%_55%)] bg-white text-[hsl(227_81%_55%)] hover:bg-[hsl(227_81%_55%)] hover:text-white"
+                )}
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <Image
+                  src="/InnovAI_logo.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width={54}
+                  height={20}
+                  className="h-5 w-[54px] shrink-0 object-contain transition-[filter] group-hover:brightness-0 group-hover:invert"
+                />
                 Experience Our Ai
               </a>
               <a

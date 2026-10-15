@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { ArrowUp } from "lucide-react";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -44,7 +43,7 @@ export function BackToTop() {
       tabIndex={visible ? 0 : -1}
       type="button"
     >
-      <FontAwesomeIcon aria-hidden="true" className="size-5" icon={faArrowUp} />
+      <ArrowUp aria-hidden="true" className="size-5" strokeWidth={2.5} />
     </button>
   );
 }

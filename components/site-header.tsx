@@ -152,11 +152,19 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 xl:flex">
           <a
-            className="flex h-11 items-center justify-center whitespace-nowrap rounded-full border border-brand px-4 text-[13px] font-semibold uppercase text-brand transition-colors hover:bg-paper"
+            className="group flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[hsl(227_81%_55%)] px-4 text-[13px] font-semibold uppercase text-[hsl(227_81%_55%)] transition-colors hover:bg-[hsl(227_81%_55%)] hover:text-white"
             href="https://www.recordreview.ai/"
             rel="noopener noreferrer"
             target="_blank"
           >
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="h-5 w-[54px] shrink-0 object-contain transition-[filter] group-hover:brightness-0 group-hover:invert"
+              height={20}
+              src="/InnovAI_logo.svg"
+              width={54}
+            />
             Experience Our Ai
           </a>
           <Link
@@ -241,12 +249,20 @@ export function SiteHeader() {
             ))}
             <li className="pt-4">
               <a
-                className="mb-3 flex min-h-12 items-center justify-center rounded-full border border-brand px-6 text-sm font-semibold uppercase text-brand transition-colors hover:bg-paper"
+                className="group mb-3 flex min-h-12 items-center justify-center gap-2 rounded-full border border-[hsl(227_81%_55%)] px-6 text-sm font-semibold uppercase text-[hsl(227_81%_55%)] transition-colors hover:bg-[hsl(227_81%_55%)] hover:text-white"
                 href="https://www.recordreview.ai/"
                 onClick={() => setMenuOpen(false)}
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <Image
+                  alt=""
+                  aria-hidden="true"
+                  className="h-5 w-[54px] shrink-0 object-contain transition-[filter] group-hover:brightness-0 group-hover:invert"
+                  height={20}
+                  src="/InnovAI_logo.svg"
+                  width={54}
+                />
                 Experience Our Ai
               </a>
               <Link

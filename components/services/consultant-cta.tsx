@@ -1,11 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
  * Full-bleed orange consultation band. `bg21.webp` (1920x698) carries the faint
- * world-map artwork; `mix-blend-multiply` lets the brand colour underneath show
- * through the light areas, and keeps the band solid while the image loads.
+ * world-map artwork. It is multiplied onto the brand colour with
+ * `background-blend-mode` and a 40% brand wash on top, which reproduces a 60%
+ * opacity multiply. `mix-blend-mode` is avoided because axe (Lighthouse)
+ * then misreads the CTA button background and reports a contrast failure.
  */
 export function ConsultantCta({
   className,
@@ -26,16 +27,18 @@ export function ConsultantCta({
       className={cn("relative isolate overflow-hidden bg-brand", className)}
       id="consultant-cta"
     >
-      <Image
-        alt=""
-        className="object-cover opacity-60 mix-blend-multiply"
-        fill
-        sizes="100vw"
-        src="/images/service/bg21.webp"
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-brand bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgb(234 85 28 / 0.4), rgb(234 85 28 / 0.4)), url(/images/service/bg21.webp)",
+          backgroundBlendMode: "normal, multiply",
+        }}
       />
 
       <div className="container-site relative z-10 py-14 text-center sm:py-16 lg:py-20">
-        <p className="text-[15px] font-medium text-white/90">{eyebrow}</p>
+        <p className="text-[15px] font-medium text-white">{eyebrow}</p>
 
         <h2 className="mx-auto mt-3 max-w-[820px] text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.3] font-bold text-white">
           {heading}

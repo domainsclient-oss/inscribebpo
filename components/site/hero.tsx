@@ -124,23 +124,28 @@ export function Hero() {
 
       <div
         aria-label="Choose a slide"
-        className="absolute right-0 bottom-4 left-0 z-20 flex justify-center gap-2"
+        className="absolute right-0 bottom-2 left-0 z-20 flex justify-center"
         role="group"
       >
         {slides.map((item, index) => (
           <button
             aria-current={index === activeIndex ? "true" : undefined}
             aria-label={`Show slide ${index + 1}: ${item.title}`}
-            className={cn(
-              "h-2.5 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
-              index === activeIndex
-                ? "w-8 bg-white"
-                : "w-2.5 bg-white/55 hover:bg-white/80"
-            )}
+            className="group flex h-6 min-w-6 items-center justify-center px-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             key={item.title}
             onClick={() => showSlide(index)}
             type="button"
-          />
+          >
+            <span
+              aria-hidden="true"
+              className={cn(
+                "block h-2.5 rounded-full transition-all",
+                index === activeIndex
+                  ? "w-8 bg-white"
+                  : "w-2.5 bg-white/55 group-hover:bg-white/80"
+              )}
+            />
+          </button>
         ))}
       </div>
     </section>

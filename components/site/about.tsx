@@ -37,19 +37,19 @@ export function About() {
             Legal and Insurance Industries.
           </p>
 
-          <dl className="mt-10 space-y-8">
+          <div className="mt-10 space-y-8">
             {stats.map((stat) => (
               <div
                 className="flex items-center gap-6 sm:gap-10"
                 key={stat.label}
               >
                 <div className="min-w-[140px] shrink-0">
-                  <dt className="font-heading text-[clamp(2.25rem,4vw,3rem)] leading-none font-bold text-brand">
+                  <p className="font-heading text-[clamp(2.25rem,4vw,3rem)] leading-none font-bold text-brand">
                     {stat.value}
-                  </dt>
-                  <dd className="mt-2 font-heading text-[15px] font-semibold tracking-[0.14em] text-navy uppercase">
+                  </p>
+                  <p className="mt-2 font-heading text-[15px] font-semibold tracking-[0.14em] text-navy uppercase">
                     {stat.label}
-                  </dd>
+                  </p>
                 </div>
                 <div className="border-l border-black/10 pl-6 sm:pl-10">
                   <p className="text-[15px] leading-relaxed text-ink-2">
@@ -58,7 +58,7 @@ export function About() {
                 </div>
               </div>
             ))}
-          </dl>
+          </div>
         </div>
 
         {/* Image — rendered at its natural aspect ratio, uncropped */}

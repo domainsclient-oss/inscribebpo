@@ -13,7 +13,7 @@
   --color-brand: #ea551c;
   --color-brand-dark: #c9440f;
   --color-navy: #032e42;
-  --color-ink: #7a7a7a;
+  --color-ink: #717171;
   --color-ink-2: #676767;
   --color-paper: #f8f8f8;
   --color-night: #111111;
@@ -170,10 +170,10 @@
 /* Scrolling squiggle used as a heading accent / decorative rule */
 @keyframes wave-slide {
   from {
-    background-position-x: 0;
+    transform: translateX(-40px);
   }
   to {
-    background-position-x: 40px;
+    transform: translateX(0);
   }
 }
 
